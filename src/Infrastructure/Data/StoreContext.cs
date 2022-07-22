@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApplicationCore.Interfaces.Data
+namespace Infrastructure.Data
 {
     public class StoreContext : DbContext
     {

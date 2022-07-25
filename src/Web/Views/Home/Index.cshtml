@@ -5,6 +5,17 @@
 
 <h1>Products</h1>
 
+<div class="border rounded bg-light p-2 my-3">
+    <form method="get" class="form-inline">
+        <label asp-for="BrandId" class="mr-sm-2 mb-sm-0 mb-sm-0 mb-2">Brand</label>
+        <select asp-for="BrandId" asp-items="Model.Brands" class="form-control mr-sm-2 mb-sm-0 mb-sm-0 mb-2"></select>
+
+        <label asp-for="CategoryId" class="mr-sm-2 mb-sm-0 mb-sm-0 mb-2">Category</label>
+        <select asp-for="CategoryId" asp-items="Model.Categories" class="form-control mr-sm-2 mb-sm-0 mb-sm-0 mb-2"></select>
+        <button class="btn btn-primary">List</button>
+    </form>
+</div>
+
 <div class="row">
     @foreach (var product in Model.Products)
     {

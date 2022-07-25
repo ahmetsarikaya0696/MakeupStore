@@ -38,11 +38,20 @@
         <li class="page-item @(!pi.HasPrevious ? "disabled" : "")">
             <a class="page-link" asp-route-categoryId="@Model.CategoryId" asp-route-brandId="@Model.BrandId" asp-route-pageId="@(pi.CurrentPage - 1)">&laquo;</a>
         </li>
-        @for (int i = 1; i <= pi.TotalPages; i++)
+        @foreach (var pageNumber in pi.PageNumbers)
         {
-            <li class="page-item @(i == pi.CurrentPage ? "active" : "")">
-                <a class="page-link" asp-route-categoryId="@Model.CategoryId" asp-route-brandId="@Model.BrandId" asp-route-pageId="@i">@i</a>
-            </li>
+            if (pageNumber == -1)
+            {
+                <li class="page-item disabled)">
+                    <a tabindex="-1" class="page-link">&hellip;</a>
+                </li>
+            }
+            else
+            {
+                <li class="page-item @(pageNumber == pi.CurrentPage ? "active" : "")">
+                    <a tabindex="-1" class="page-link" asp-route-categoryId="@Model.CategoryId" asp-route-brandId="@Model.BrandId" asp-route-pageId="@pageNumber">@pageNumber</a>
+                </li>
+            }
         }
         <li class="page-item @(!pi.HasNext ? "disabled" : "")">
             <a class="page-link" asp-route-categoryId="@Model.CategoryId" asp-route-brandId="@Model.BrandId" asp-route-pageId="@(pi.CurrentPage + 1)">&raquo;</a>
